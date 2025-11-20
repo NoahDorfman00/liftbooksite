@@ -1,0 +1,315 @@
+@font-face {
+    font-family: 'Schoolbell';
+    src: url('/assets/fonts/Schoolbell-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --bg: #f9faf9;
+    --fg: #111111;
+    --muted: #555555;
+    --border: #e9e9e9;
+    --radius: 14px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    backdrop-filter: saturate(180%) blur(10px);
+    background: color-mix(in oklab, var(--bg) 80%, white 20%);
+    border-bottom: 1px solid var(--border);
+}
+
+.site-header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+}
+
+.brand-name {
+    font-family: 'Schoolbell', cursive;
+    font-size: 24px;
+    letter-spacing: 0.5px;
+}
+
+nav {
+    display: flex;
+    gap: 18px;
+}
+
+nav a {
+    color: var(--fg);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+nav a.cta-link {
+    padding: 8px 12px;
+    border: 1px solid var(--fg);
+    border-radius: 999px;
+}
+
+.section {
+    padding: 80px 0;
+}
+
+.hero {
+    padding: 120px 0 80px;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.hero-copy h1 {
+    font-family: 'Schoolbell', cursive;
+    font-size: 56px;
+    line-height: 1.02;
+    margin: 0 0 12px;
+}
+
+.hero-copy p {
+    font-size: 20px;
+    color: var(--muted);
+    margin: 0 0 22px;
+}
+
+.cta-row {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #fff;
+    background: #000;
+    padding: 12px 18px;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.cta-button .apple-logo {
+    font-family: 'SF Pro Text', system-ui, -apple-system, sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1;
+}
+
+.cta-button .cta-lines {
+    display: grid;
+    line-height: 1;
+}
+
+.cta-button small {
+    opacity: 0.8;
+    font-size: 10px;
+    letter-spacing: 0.3px;
+}
+
+.cta-button strong {
+    font-size: 14px;
+    letter-spacing: 0.2px;
+}
+
+.phone-frame {
+    aspect-ratio: 9/19.5;
+    width: 100%;
+    max-width: 380px;
+    margin-inline: auto;
+    border-radius: 36px;
+    border: 10px solid #000;
+    background: var(--bg);
+    position: relative;
+    overflow: hidden;
+}
+
+.phone-mock {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 24px;
+    opacity: 0.98;
+}
+
+.features {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: #fff;
+}
+
+.feature-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.feature-card {
+    padding: 24px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg);
+}
+
+.feature-card h3 {
+    font-family: 'Schoolbell', cursive;
+    font-size: 24px;
+    margin: 0 0 8px;
+}
+
+.feature-card p {
+    margin: 0;
+    color: var(--muted);
+}
+
+.download .center {
+    text-align: center;
+}
+
+.download h2 {
+    font-family: 'Schoolbell', cursive;
+    font-size: 40px;
+    margin: 0 0 8px;
+}
+
+.download p {
+    color: var(--muted);
+    margin: 0 0 18px;
+}
+
+.note {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 10px;
+}
+
+.site-footer {
+    border-top: 1px solid var(--border);
+    padding: 24px 0;
+    background: #fff;
+}
+
+.footer-grid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.foot-brand .brand-name {
+    font-size: 20px;
+}
+
+.muted {
+    color: var(--muted);
+    text-decoration: none;
+}
+
+/* Reveal animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity .6s ease, transform .6s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Subtle parallax on the phone mock */
+.parallax {
+    will-change: transform;
+}
+
+.demo-section {
+    padding: 120px 0 80px;
+}
+
+.video-container {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-container video {
+    max-width: 280px;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    background: #000;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 480px) {
+    .video-container video {
+        max-width: 90vw;
+    }
+}
+
+@media (max-width: 900px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        padding-top: 80px;
+    }
+
+    .feature-list {
+        grid-template-columns: 1fr;
+    }
+}

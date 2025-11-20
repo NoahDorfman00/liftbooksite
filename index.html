@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>liftbook – Simple lifting tracker</title>
+    <meta name="description" content="liftbook is a super simple weightlifting tracker. Like a notebook—just better.">
+    <link rel="preload" href="/assets/fonts/Schoolbell-Regular.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+    <link rel="apple-touch-icon" href="/assets/images/app-icon.png">
+    <meta property="og:title" content="liftbook">
+    <meta property="og:description" content="A simple, quietly helpful lifting tracker.">
+    <meta property="og:image" content="/assets/images/social.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://liftbook.example.com/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="liftbook">
+    <meta name="twitter:description" content="A simple, quietly helpful lifting tracker.">
+    <meta name="twitter:image" content="/assets/images/social.png">
+    <meta name="theme-color" content="#f9faf9">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="brand">
+                <img src="/assets/images/app-icon.png" alt="liftbook icon" class="brand-icon">
+                <span class="brand-name">liftbook</span>
+            </div>
+            <nav>
+                <a href="#download" class="cta-link">Get the app</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero section" id="home">
+            <div class="container hero-grid">
+                <div class="hero-copy reveal">
+                    <h1>Lift tracking, without the clutter</h1>
+                    <p>As simple as a notebook. Remembers what matters. Never in your way.</p>
+                    <div class="cta-row">
+                        <a id="app-store-link" href="#download" class="cta-button primary"
+                            aria-label="Download on the App Store">
+                            <span class="apple-logo" aria-hidden="true"></span>
+                            <span class="cta-lines">
+                                <small>Download on the</small>
+                                <strong>App Store</strong>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-visual reveal">
+                    <div class="phone-frame parallax">
+                        <img src="/assets/images/logo.png" alt="liftbook logo" class="phone-mock">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section features" id="features">
+            <div class="container">
+                <ul class="feature-list">
+                    <li class="feature-card reveal">
+                        <h3>Type-and-go input</h3>
+                        <p>Start typing and liftbook suggests your most used exercises. No tapping through menus.</p>
+                    </li>
+                    <li class="feature-card reveal">
+                        <h3>Quiet suggestions</h3>
+                        <p>See your last recorded weight for each exercise—always editable, never blocking.</p>
+                    </li>
+                    <li class="feature-card reveal">
+                        <h3>Simple by design</h3>
+                        <p>Clean black and white UI that feels like writing in a notebook—just a bit smarter.</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section download" id="download">
+            <div class="container center reveal">
+                <h2>Get liftbook</h2>
+                <p>Start tracking in seconds.</p>
+                <a id="download-app-store" href="#" class="cta-button primary" aria-label="Download on the App Store">
+                    <span class="apple-logo" aria-hidden="true"></span>
+                    <span class="cta-lines">
+                        <small>Download on the</small>
+                        <strong>App Store</strong>
+                    </span>
+                </a>
+                <p class="note">Send me the App Store URL and I'll wire it in.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="brand foot-brand">
+                <span class="brand-name">liftbook</span>
+            </div>
+            <div class="meta">
+                <span>© <span id="year"></span> liftbook</span>
+                <a href="#" class="muted">Privacy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
+</body>
+
+</html>

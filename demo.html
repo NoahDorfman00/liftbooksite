@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>liftbook – Demo</title>
+    <meta name="description" content="liftbook is a super simple weightlifting tracker. Like a notebook—just better.">
+    <link rel="preload" href="/assets/fonts/Schoolbell-Regular.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+    <link rel="apple-touch-icon" href="/assets/images/app-icon.png">
+    <meta name="theme-color" content="#f9faf9">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="/" class="brand" style="text-decoration: none; color: inherit;">
+                <img src="/assets/images/app-icon.png" alt="liftbook icon" class="brand-icon">
+                <span class="brand-name">liftbook</span>
+            </a>
+            <nav>
+                <a href="#demo-app-store" class="cta-link">Get the app</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="section demo-section">
+            <div class="container center">
+                <div class="video-container" style="margin-bottom: 40px;">
+                    <video id="demo-video" controls preload="metadata"
+                        style="max-width: 280px; width: 100%; height: auto; margin: 0 auto; display: block;">
+                        <source src="/assets/demo.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <a id="demo-app-store" name="demo-app-store"></a>
+                <a id="demo-app-store-link" href="#" class="cta-button primary" aria-label="Download on the App Store">
+                    <span class="apple-logo" aria-hidden="true"></span>
+                    <span class="cta-lines">
+                        <small>Download on the</small>
+                        <strong>App Store</strong>
+                    </span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="brand foot-brand">
+                <span class="brand-name">liftbook</span>
+            </div>
+            <div class="meta">
+                <span>© <span id="year"></span> liftbook</span>
+                <a href="#" class="muted">Privacy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
+</body>
+
+</html>
