@@ -1,0 +1,14 @@
+{
+    "rules": {
+        "contactMessages": {
+            // Only admin can read messages
+            ".read": "auth != null && auth.token.email == 'n.dorfman00@gmail.com'",
+            "$messageId": {
+                // Allow anyone to create new messages OR allow admin to update/delete existing messages
+                ".write": "(!data.exists() || (auth != null && auth.token.email == 'n.dorfman00@gmail.com'))",
+                // Only admin can read individual messages
+                ".read": "auth != null && auth.token.email == 'n.dorfman00@gmail.com'"
+            }
+        }
+    }
+}

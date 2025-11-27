@@ -254,6 +254,17 @@ nav a.cta-link {
     text-decoration: none;
 }
 
+.meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.meta a.muted:hover {
+    text-decoration: underline;
+}
+
 .legal-main {
     padding-top: 80px;
 }
@@ -346,5 +357,266 @@ nav a.cta-link {
 
     .feature-list {
         grid-template-columns: 1fr;
+    }
+}
+
+/* Contact Form Styles */
+.contact-form {
+    margin-top: 32px;
+    max-width: 600px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: var(--fg);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 16px;
+    background: var(--bg);
+    color: var(--fg);
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--fg);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact-form .cta-button {
+    margin-top: 8px;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+}
+
+.contact-form .cta-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.form-message {
+    margin-top: 16px;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.form-message.success {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #a5d6a7;
+}
+
+.form-message.error {
+    background: #ffebee;
+    color: #c62828;
+    border: 1px solid #ef9a9a;
+}
+
+/* Admin Page Styles */
+.admin-controls {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.filter-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.filter-label input[type="checkbox"] {
+    width: auto;
+    cursor: pointer;
+}
+
+.filter-type-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.filter-select {
+    padding: 6px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 14px;
+    background: var(--bg);
+    color: var(--fg);
+    cursor: pointer;
+}
+
+#messages-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.message-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    background: var(--bg);
+    transition: opacity 0.2s;
+}
+
+.message-card.attended {
+    opacity: 0.7;
+    background: #f5f5f5;
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.message-header strong {
+    color: var(--fg);
+}
+
+.message-subject {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 2px 8px;
+    background: var(--border);
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.attended-badge {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 2px 8px;
+    background: #4caf50;
+    color: white;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.message-date {
+    font-size: 12px;
+    color: var(--muted);
+    white-space: nowrap;
+}
+
+.message-body {
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.message-actions {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.mark-attended-btn,
+.unmark-attended-btn,
+.delete-message-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: opacity 0.2s;
+    font-family: inherit;
+}
+
+.mark-attended-btn {
+    background: var(--fg);
+    color: white;
+}
+
+.unmark-attended-btn {
+    background: #666;
+    color: white;
+}
+
+.delete-message-btn {
+    background: #c62828;
+    color: white;
+}
+
+.mark-attended-btn:hover,
+.unmark-attended-btn:hover,
+.delete-message-btn:hover {
+    opacity: 0.8;
+}
+
+.mark-attended-btn:active,
+.unmark-attended-btn:active,
+.delete-message-btn:active {
+    opacity: 0.6;
+}
+
+/* Google Sign-In Button */
+#google-signin-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+}
+
+#google-signin-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+#google-signin-btn:not(:disabled):hover {
+    opacity: 0.9;
+}
+
+/* Temporary Signup Section */
+#signup-section {
+    margin-bottom: 24px;
+}
+
+@media (max-width: 600px) {
+    .admin-controls {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .message-header {
+        flex-direction: column;
     }
 }

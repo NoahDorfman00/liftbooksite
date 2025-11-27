@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>liftbook – Contact</title>
+    <meta name="description" content="Report bugs or contact the liftbook team.">
+    <link rel="preload" href="/assets/fonts/Schoolbell-Regular.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+    <link rel="apple-touch-icon" href="/assets/images/app-icon.png">
+    <meta name="theme-color" content="#f9faf9">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="/" class="brand" style="text-decoration: none; color: inherit;">
+                <img src="/assets/images/app-icon.png" alt="liftbook icon" class="brand-icon">
+                <span class="brand-name">liftbook</span>
+            </a>
+            <nav>
+                <a href="/#download" class="cta-link">Get the app</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="legal-main">
+        <section class="section">
+            <div class="container legal-content">
+                <h1>Contact Us</h1>
+                <p>Found a bug? Have a question? We'd love to hear from you!</p>
+
+                <form id="contact-form" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a subject...</option>
+                            <option value="bug">Bug Report</option>
+                            <option value="feature">Feature Request</option>
+                            <option value="question">Question</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="6" required></textarea>
+                    </div>
+
+                    <button type="submit" class="cta-button primary" id="submit-btn">
+                        Send Message
+                    </button>
+
+                    <div id="form-message" class="form-message"></div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="brand foot-brand">
+                <span class="brand-name">liftbook</span>
+            </div>
+            <div class="meta">
+                <span>© <span id="year"></span> liftbook</span>
+                <a href="/privacy.html" class="muted">Privacy</a>
+                <a href="/contact.html" class="muted">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    
+    <script src="/script.js"></script>
+    <script src="/contact.js"></script>
+</body>
+
+</html>
+
