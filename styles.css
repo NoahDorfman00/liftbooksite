@@ -254,6 +254,41 @@ nav a.cta-link {
     text-decoration: none;
 }
 
+.legal-main {
+    padding-top: 80px;
+}
+
+.legal-content {
+    max-width: 720px;
+}
+
+.legal-content h1 {
+    font-family: 'Schoolbell', cursive;
+    font-size: 40px;
+    margin-bottom: 8px;
+}
+
+.legal-content h2 {
+    margin-top: 28px;
+    margin-bottom: 8px;
+    font-size: 20px;
+}
+
+.legal-content p,
+.legal-content ul {
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.legal-content ul {
+    padding-left: 20px;
+}
+
+.legal-updated {
+    font-size: 14px;
+    color: var(--muted);
+}
+
 /* Reveal animations */
 .reveal {
     opacity: 0;
