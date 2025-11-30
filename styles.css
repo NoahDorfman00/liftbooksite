@@ -61,9 +61,10 @@ body {
 }
 
 .brand-icon {
-    width: 28px;
-    height: 28px;
-    border-radius: 6px;
+    width: 36px;
+    height: 36px;
+    border-radius: 22%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
 .brand-name {
@@ -104,17 +105,26 @@ nav a.cta-link {
     align-items: center;
 }
 
+.hero-app-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 22%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 1px 4px rgba(0, 0, 0, 0.06);
+    margin-bottom: 32px;
+    display: block;
+}
+
 .hero-copy h1 {
     font-family: 'Schoolbell', cursive;
     font-size: 56px;
     line-height: 1.02;
-    margin: 0 0 12px;
+    margin: 0 0 24px;
 }
 
 .hero-copy p {
     font-size: 20px;
     color: var(--muted);
-    margin: 0 0 22px;
+    margin: 0 0 32px;
 }
 
 .cta-row {
@@ -158,10 +168,28 @@ nav a.cta-link {
     letter-spacing: 0.2px;
 }
 
+/* Larger button in hero section */
+.hero .cta-button {
+    padding: 16px 24px;
+    transform: scale(1.1);
+}
+
+.hero .cta-button .apple-logo {
+    font-size: 24px;
+}
+
+.hero .cta-button small {
+    font-size: 11px;
+}
+
+.hero .cta-button strong {
+    font-size: 16px;
+}
+
 .phone-frame {
     aspect-ratio: 9/19.5;
     width: 100%;
-    max-width: 380px;
+    max-width: 280px;
     margin-inline: auto;
     border-radius: 36px;
     border: 10px solid #000;
