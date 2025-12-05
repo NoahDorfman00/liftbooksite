@@ -41,7 +41,7 @@
             <div class="container hero-grid">
                 <div class="hero-copy reveal">
                     <img src="/assets/images/app-icon.png" alt="liftbook app icon" class="hero-app-icon">
-                    <h1>Lift tracking, without the clutter</h1>
+                    <h1>Lift tracking.<br>No clutter.</h1>
                     <p>As simple as a notebook. Remembers what matters. Never in your way.</p>
                     <div class="cta-row">
                         <a id="app-store-link" href="#download" class="cta-button primary"
@@ -55,8 +55,23 @@
                     </div>
                 </div>
                 <div class="hero-visual reveal">
-                    <div class="phone-frame parallax">
-                        <img src="/assets/images/logo.png" alt="liftbook logo" class="phone-mock">
+                    <div class="preview-slideshow parallax">
+                        <button class="slideshow-btn prev-btn" aria-label="Previous image">‹</button>
+                        <div class="slideshow-wrapper">
+                            <div class="slideshow-container">
+                                <img src="/assets/images/preview1.png" alt="liftbook preview 1" class="slide active">
+                                <img src="/assets/images/preview2.png" alt="liftbook preview 2" class="slide">
+                                <img src="/assets/images/preview3.png" alt="liftbook preview 3" class="slide">
+                                <img src="/assets/images/preview4.png" alt="liftbook preview 4" class="slide">
+                            </div>
+                            <div class="slideshow-indicators">
+                                <button class="indicator active" aria-label="Go to slide 1" data-slide="0"></button>
+                                <button class="indicator" aria-label="Go to slide 2" data-slide="1"></button>
+                                <button class="indicator" aria-label="Go to slide 3" data-slide="2"></button>
+                                <button class="indicator" aria-label="Go to slide 4" data-slide="3"></button>
+                            </div>
+                        </div>
+                        <button class="slideshow-btn next-btn" aria-label="Next image">›</button>
                     </div>
                 </div>
             </div>

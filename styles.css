@@ -95,19 +95,19 @@ nav a.cta-link {
 }
 
 .hero {
-    padding: 120px 0 80px;
+    padding: 100px 0 80px;
 }
 
 .hero-grid {
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
-    gap: 40px;
+    gap: 60px;
     align-items: center;
 }
 
 .hero-app-icon {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     border-radius: 22%;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 1px 4px rgba(0, 0, 0, 0.06);
     margin-bottom: 32px;
@@ -116,13 +116,13 @@ nav a.cta-link {
 
 .hero-copy h1 {
     font-family: 'Schoolbell', cursive;
-    font-size: 56px;
+    font-size: 72px;
     line-height: 1.02;
     margin: 0 0 24px;
 }
 
 .hero-copy p {
-    font-size: 20px;
+    font-size: 24px;
     color: var(--muted);
     margin: 0 0 32px;
 }
@@ -170,40 +170,121 @@ nav a.cta-link {
 
 /* Larger button in hero section */
 .hero .cta-button {
-    padding: 16px 24px;
+    padding: 18px 28px;
     transform: scale(1.1);
 }
 
 .hero .cta-button .apple-logo {
-    font-size: 24px;
+    font-size: 28px;
 }
 
 .hero .cta-button small {
-    font-size: 11px;
+    font-size: 13px;
 }
 
 .hero .cta-button strong {
-    font-size: 16px;
+    font-size: 18px;
 }
 
-.phone-frame {
+.preview-slideshow {
+    width: 100%;
+    max-width: 480px;
+    margin-inline: auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.slideshow-wrapper {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.slideshow-container {
     aspect-ratio: 9/19.5;
     width: 100%;
-    max-width: 280px;
-    margin-inline: auto;
+    max-width: 360px;
     border-radius: 36px;
-    border: 10px solid #000;
-    background: var(--bg);
-    position: relative;
     overflow: hidden;
+    position: relative;
+    background: var(--bg);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15), 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.phone-mock {
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    padding: 24px;
-    opacity: 0.98;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slideshow-btn {
+    background: none;
+    color: rgba(0, 0, 0, 0.6);
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 32px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+    opacity: 1;
+    flex-shrink: 0;
+    line-height: 1;
+    padding: 0;
+}
+
+.slideshow-btn:hover {
+    color: rgba(0, 0, 0, 0.8);
+    transform: scale(1.2);
+}
+
+.slideshow-btn:active {
+    transform: scale(1.1);
+}
+
+.slideshow-indicators {
+    margin-top: 24px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+}
+
+.indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+    padding: 0;
+}
+
+.indicator:hover {
+    background: rgba(0, 0, 0, 0.4);
+    transform: scale(1.2);
+}
+
+.indicator.active {
+    background: rgba(0, 0, 0, 0.6);
+    transform: scale(1.3);
 }
 
 .features {

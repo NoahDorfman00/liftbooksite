@@ -14,7 +14,7 @@
 
     document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
-    // Subtle parallax on the hero phone mock
+    // Subtle parallax on the hero preview slideshow
     const parallaxEl = document.querySelector('.parallax');
     if (parallaxEl) {
         window.addEventListener('scroll', () => {
@@ -23,6 +23,45 @@
             parallaxEl.style.transform = `translateY(${offset}px)`;
         }, { passive: true });
     }
+
+    // Preview slideshow functionality
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    const indicators = document.querySelectorAll('.indicator');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === index);
+        });
+        indicators.forEach((indicator, i) => {
+            indicator.classList.toggle('active', i === index);
+        });
+        currentSlide = index;
+    }
+
+    function nextSlide() {
+        const nextIndex = (currentSlide + 1) % slides.length;
+        showSlide(nextIndex);
+    }
+
+    function prevSlide() {
+        const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(prevIndex);
+    }
+
+    if (prevBtn && nextBtn && slides.length > 0) {
+        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', nextSlide);
+    }
+
+    // Handle indicator clicks
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            showSlide(index);
+        });
+    });
 
     // Wire all CTAs to the same App Store link if provided later
     const appStoreUrl = null; // TODO: replace with actual App Store URL
