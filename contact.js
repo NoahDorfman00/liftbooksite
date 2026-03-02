@@ -81,10 +81,10 @@ if (typeof emailjs !== 'undefined') {
                 const subjectLabel = subjectLabels[subject] || subject;
 
                 // Format email subject
-                const emailSubject = `liftbook Contact: ${subjectLabel}`;
+                const emailSubject = `Liftbook Contact: ${subjectLabel}`;
 
                 // Format email message with all information
-                const emailMessage = `You received a new contact form submission from liftbook.
+                const emailMessage = `You received a new contact form submission from Liftbook.
 
 Name: ${name}
 Email: ${email}
