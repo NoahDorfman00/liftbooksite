@@ -63,28 +63,7 @@
         });
     });
 
-    // Wire all CTAs to the same App Store link if provided later
-    const appStoreUrl = null; // TODO: replace with actual App Store URL
-    if (appStoreUrl) {
-        const links = [
-            document.getElementById('app-store-link'),
-            document.getElementById('download-app-store'),
-            document.getElementById('demo-app-store-link')
-        ].filter(Boolean);
-        links.forEach((a) => { a.href = appStoreUrl; a.setAttribute('target', '_blank'); a.setAttribute('rel', 'noopener'); });
-    }
-
-    // Handle "Get the app" link on demo page to scroll to button
-    const headerGetAppLink = document.querySelector('nav a[href="#demo-app-store"]');
-    if (headerGetAppLink) {
-        headerGetAppLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            const demoButton = document.getElementById('demo-app-store-link');
-            if (demoButton) {
-                demoButton.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-        });
-    }
+    // App Store links are now set directly in HTML, no JS wiring needed
 })();
 
 
