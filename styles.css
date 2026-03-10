@@ -732,7 +732,7 @@ nav a.cta-link {
 
 /* Heavy Page Styles */
 .heavy-content {
-    max-width: 720px;
+    max-width: 1080px;
 }
 
 .heavy-content.container {
@@ -757,6 +757,7 @@ nav a.cta-link {
     padding: 40px;
     background: #fff;
     text-align: center;
+    max-width: 720px;
 }
 
 .heavy-qr {
@@ -801,12 +802,6 @@ nav a.cta-link {
     word-break: break-word;
     max-height: 600px;
     overflow-y: auto;
-}
-
-.heavy-actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 16px;
 }
 
 .heavy-action-btn {
@@ -940,6 +935,163 @@ nav a.cta-link {
     color: #999;
 }
 
+/* Dashboard layout */
+.heavy-dashboard {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.heavy-dashboard .heavy-chart-wrap {
+    flex: 1;
+    min-width: 0;
+}
+
+.heavy-sidebar {
+    width: 180px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Chart Tab Bar */
+.heavy-tab-bar {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+}
+
+.heavy-tab-btn {
+    padding: 6px 14px;
+    border: none;
+    background: none;
+    font-family: 'Schoolbell', cursive;
+    font-size: 16px;
+    color: #999;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: color 0.15s, background 0.15s;
+}
+
+.heavy-tab-btn:hover {
+    color: #666;
+    background: var(--bg);
+}
+
+.heavy-tab-btn--active {
+    color: #333;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* Stats column (sidebar) */
+.heavy-stats-col {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.heavy-stat-card {
+    text-align: center;
+    padding: 10px 8px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg);
+}
+
+.heavy-stat-label {
+    font-family: 'Schoolbell', cursive;
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 4px;
+}
+
+.heavy-stat-value {
+    font-family: 'Schoolbell', cursive;
+    font-size: 22px;
+    color: #333;
+    font-weight: bold;
+}
+
+.heavy-stat-positive {
+    color: #2e7d32;
+}
+
+.heavy-stat-negative {
+    color: #c62828;
+}
+
+/* Share button (sidebar) */
+.heavy-share-btn {
+    padding: 12px 16px;
+    border: 1px solid var(--fg);
+    border-radius: 8px;
+    background: var(--fg);
+    color: #fff;
+    font-family: 'Schoolbell', cursive;
+    font-size: 18px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+    text-align: center;
+}
+
+.heavy-share-btn:hover {
+    opacity: 0.85;
+}
+
+/* Actions bar */
+.heavy-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.heavy-actions-btns {
+    display: flex;
+    gap: 10px;
+}
+
+/* Interactive Legend */
+.heavy-legend-item {
+    cursor: pointer;
+    transition: opacity 0.15s;
+    user-select: none;
+}
+
+.heavy-legend-item--disabled {
+    opacity: 0.3;
+    text-decoration: line-through;
+}
+
+/* Share title (injected during screenshot, hidden otherwise) */
+.heavy-share-title {
+    font-family: 'Schoolbell', cursive;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 16px;
+}
+
+/* Chart tooltip */
+.heavy-tooltip {
+    position: absolute;
+    z-index: 30;
+    background: #1a1a1a;
+    color: #fff;
+    font-family: 'Schoolbell', cursive;
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 8px 12px;
+    border-radius: 8px;
+    pointer-events: none;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
 @media (max-width: 600px) {
     .heavy-card {
         padding: 24px 16px;
@@ -953,5 +1105,49 @@ nav a.cta-link {
         font-size: 11px;
         padding: 14px;
         max-height: 400px;
+    }
+
+    .heavy-dashboard {
+        flex-direction: column;
+    }
+
+    .heavy-sidebar {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .heavy-stats-col {
+        flex: 1;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .heavy-stat-card {
+        flex: 1 1 calc(50% - 4px);
+        min-width: 0;
+    }
+
+    .heavy-stat-value {
+        font-size: 18px;
+    }
+
+    .heavy-share-btn {
+        flex: 1 1 100%;
+    }
+
+    .heavy-tab-bar {
+        flex-wrap: wrap;
+    }
+
+    .heavy-actions {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .heavy-actions-btns {
+        flex-wrap: wrap;
     }
 }

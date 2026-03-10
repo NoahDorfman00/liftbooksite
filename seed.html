@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Seed Liftbook Heavy</title>
+    <style>
+        body { font-family: system-ui, sans-serif; max-width: 480px; margin: 40px auto; padding: 0 20px; }
+        h1 { font-size: 24px; }
+        input[type="file"] { margin: 16px 0; }
+        button { padding: 10px 20px; font-size: 16px; cursor: pointer; border: 1px solid #ccc; border-radius: 8px; background: #fff; }
+        button:hover { background: #f0f0f0; }
+        #status { margin-top: 16px; color: #555; }
+        .done { color: #2e7d32; font-weight: 600; }
+        .err { color: #c62828; }
+    </style>
+</head>
+<body>
+    <h1>Seed Liftbook Heavy</h1>
+    <p>Pick a Liftbook JSON export to load into IndexedDB.</p>
+    <input type="file" id="file-input" accept=".json,application/json">
+    <br>
+    <button id="seed-btn" disabled>Seed Data</button>
+    <div id="status"></div>
+
+    <script>
+        var DB_NAME = 'liftbook-heavy';
+        var DB_VERSION = 1;
+        var STORE_NAME = 'liftdata';
+        var DATA_KEY = 'current';
+
+        var fileInput = document.getElementById('file-input');
+        var seedBtn = document.getElementById('seed-btn');
+        var status = document.getElementById('status');
+        var pendingData = null;
+
+        fileInput.addEventListener('change', function () {
+            var file = fileInput.files[0];
+            if (!file) return;
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                try {
+                    pendingData = JSON.parse(e.target.result);
+                    var count = (pendingData.workouts || []).length;
+                    status.textContent = 'Parsed ' + count + ' workout' + (count !== 1 ? 's' : '') + '. Ready to seed.';
+                    status.className = '';
+                    seedBtn.disabled = false;
+                } catch (err) {
+                    status.textContent = 'Invalid JSON: ' + err.message;
+                    status.className = 'err';
+                    seedBtn.disabled = true;
+                    pendingData = null;
+                }
+            };
+            reader.readAsText(file);
+        });
+
+        seedBtn.addEventListener('click', function () {
+            if (!pendingData) return;
+            seedBtn.disabled = true;
+            status.textContent = 'Writing to IndexedDB...';
+
+            var request = indexedDB.open(DB_NAME, DB_VERSION);
+            request.onupgradeneeded = function (e) {
+                var db = e.target.result;
+                if (!db.objectStoreNames.contains(STORE_NAME)) {
+                    db.createObjectStore(STORE_NAME);
+                }
+            };
+            request.onsuccess = function (e) {
+                var db = e.target.result;
+                var tx = db.transaction(STORE_NAME, 'readwrite');
+                var store = tx.objectStore(STORE_NAME);
+                store.put({ data: pendingData, savedAt: new Date().toISOString() }, DATA_KEY);
+                tx.oncomplete = function () {
+                    status.textContent = 'Done! Go to /heavy.html to see your charts.';
+                    status.className = 'done';
+                };
+                tx.onerror = function (e) {
+                    status.textContent = 'IndexedDB write failed: ' + e.target.error;
+                    status.className = 'err';
+                    seedBtn.disabled = false;
+                };
+            };
+            request.onerror = function (e) {
+                status.textContent = 'IndexedDB open failed: ' + e.target.error;
+                status.className = 'err';
+                seedBtn.disabled = false;
+            };
+        });
+    </script>
+</body>
+</html>

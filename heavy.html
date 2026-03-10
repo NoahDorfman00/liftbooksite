@@ -35,30 +35,62 @@
 
                 <!-- Saved Data Section (shown if IndexedDB has data) -->
                 <div id="saved-section" style="display: none;">
-                    <p id="saved-meta" class="heavy-meta"></p>
-
-                    <!-- Chart -->
-                    <div class="heavy-chart-wrap">
-                        <select id="movement-select" class="heavy-movement-select"></select>
-                        <div id="chart-container" class="heavy-chart-container"></div>
-                        <div class="heavy-legend">
-                            <span class="heavy-legend-item"><span class="heavy-legend-swatch" style="background:#333"></span> max</span>
-                            <span class="heavy-legend-item"><span class="heavy-legend-swatch" style="background:#777"></span> avg</span>
-                            <span class="heavy-legend-item"><span class="heavy-legend-swatch" style="background:#bbb"></span> min</span>
+                    <div class="heavy-dashboard">
+                        <!-- Chart (main area) -->
+                        <div class="heavy-chart-wrap">
+                            <select id="movement-select" class="heavy-movement-select"></select>
+                            <div id="chart-tab-bar" class="heavy-tab-bar">
+                                <button class="heavy-tab-btn heavy-tab-btn--active" data-chart="weight">Weight</button>
+                                <button class="heavy-tab-btn" data-chart="volume">Volume</button>
+                                <button class="heavy-tab-btn" data-chart="prs">PRs</button>
+                                <button class="heavy-tab-btn" data-chart="frequency">Frequency</button>
+                            </div>
+                            <div id="chart-container" class="heavy-chart-container"></div>
+                            <div class="heavy-legend">
+                                <span class="heavy-legend-item" data-series="max"><span class="heavy-legend-swatch" style="background:#333"></span> max</span>
+                                <span class="heavy-legend-item" data-series="avg"><span class="heavy-legend-swatch" style="background:#777"></span> avg</span>
+                                <span class="heavy-legend-item" data-series="min"><span class="heavy-legend-swatch" style="background:#bbb"></span> min</span>
+                            </div>
+                            <div id="range-bar" class="heavy-range-bar">
+                                <button class="heavy-range-btn heavy-range-btn--active" data-range="All">All</button>
+                                <button class="heavy-range-btn" data-range="1Y">1Y</button>
+                                <button class="heavy-range-btn" data-range="6M">6M</button>
+                                <button class="heavy-range-btn" data-range="3M">3M</button>
+                                <button class="heavy-range-btn" data-range="1M">1M</button>
+                            </div>
                         </div>
-                        <div id="range-bar" class="heavy-range-bar">
-                            <button class="heavy-range-btn heavy-range-btn--active" data-range="All">All</button>
-                            <button class="heavy-range-btn" data-range="1Y">1Y</button>
-                            <button class="heavy-range-btn" data-range="6M">6M</button>
-                            <button class="heavy-range-btn" data-range="3M">3M</button>
-                            <button class="heavy-range-btn" data-range="1M">1M</button>
+
+                        <!-- Sidebar: stats + share -->
+                        <div class="heavy-sidebar">
+                            <div id="stats-row" class="heavy-stats-col" style="display:none;">
+                                <div class="heavy-stat-card">
+                                    <div class="heavy-stat-label">All-time PR</div>
+                                    <div class="heavy-stat-value">—</div>
+                                </div>
+                                <div class="heavy-stat-card">
+                                    <div class="heavy-stat-label">Recent Avg</div>
+                                    <div class="heavy-stat-value">—</div>
+                                </div>
+                                <div class="heavy-stat-card">
+                                    <div class="heavy-stat-label">Sessions</div>
+                                    <div class="heavy-stat-value">—</div>
+                                </div>
+                                <div class="heavy-stat-card">
+                                    <div class="heavy-stat-label">3-mo Trend</div>
+                                    <div class="heavy-stat-value">—</div>
+                                </div>
+                            </div>
+                            <button id="share-chart-btn" class="heavy-share-btn">Share Chart</button>
                         </div>
                     </div>
 
                     <div class="heavy-actions">
-                        <button id="download-data-btn" class="heavy-action-btn">Download JSON</button>
-                        <button id="new-transfer-btn" class="heavy-action-btn">New Transfer</button>
-                        <button id="clear-data-btn" class="heavy-action-btn heavy-action-btn--danger">Clear Data</button>
+                        <p id="saved-meta" class="heavy-meta"></p>
+                        <div class="heavy-actions-btns">
+                            <button id="download-data-btn" class="heavy-action-btn">Download JSON</button>
+                            <button id="new-transfer-btn" class="heavy-action-btn">New Transfer</button>
+                            <button id="clear-data-btn" class="heavy-action-btn heavy-action-btn--danger">Clear Data</button>
+                        </div>
                     </div>
                 </div>
 
@@ -115,6 +147,9 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
     <!-- QR Code library -->
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+
+    <!-- html2canvas for chart sharing -->
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
     <script src="/script.js"></script>
     <script src="/heavy.js"></script>
