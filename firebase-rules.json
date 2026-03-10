@@ -1,5 +1,10 @@
 {
     "rules": {
+        "heavy-sessions": {
+            // Ephemeral signaling data - open read/write for MVP
+            ".read": true,
+            ".write": true
+        },
         "contactMessages": {
             // Only admin can read messages
             ".read": "auth != null && auth.token.email == 'n.dorfman00@gmail.com'",

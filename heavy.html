@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Liftbook Heavy – Transfer Your Data</title>
+    <meta name="description" content="Transfer your Liftbook data from your iPhone to your browser locally via peer-to-peer connection.">
+    <link rel="preload" href="/assets/fonts/Schoolbell-Regular.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+    <link rel="apple-touch-icon" href="/assets/images/app-icon.png">
+    <meta name="theme-color" content="#f9faf9">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="/" class="brand" style="text-decoration: none; color: inherit;">
+                <img src="/assets/images/app-icon.png" alt="Liftbook icon" class="brand-icon">
+                <span class="brand-name">Liftbook</span>
+            </a>
+            <nav>
+                <a href="https://apps.apple.com/us/app/liftbook-strength-log/id6755925820" class="cta-link">Get the app</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="section" style="padding-top: 32px;">
+            <div class="container heavy-content">
+                <h1>Liftbook Heavy</h1>
+                <p id="intro-text">Transfer your lift data from your iPhone to this browser, peer-to-peer. No data leaves your local network.</p>
+
+                <!-- Saved Data Section (shown if IndexedDB has data) -->
+                <div id="saved-section" style="display: none;">
+                    <p id="saved-meta" class="heavy-meta"></p>
+
+                    <!-- Chart -->
+                    <div class="heavy-chart-wrap">
+                        <select id="movement-select" class="heavy-movement-select"></select>
+                        <div id="chart-container" class="heavy-chart-container"></div>
+                        <div class="heavy-legend">
+                            <span class="heavy-legend-item"><span class="heavy-legend-swatch" style="background:#333"></span> max</span>
+                            <span class="heavy-legend-item"><span class="heavy-legend-swatch" style="background:#777"></span> avg</span>
+                            <span class="heavy-legend-item"><span class="heavy-legend-swatch" style="background:#bbb"></span> min</span>
+                        </div>
+                        <div id="range-bar" class="heavy-range-bar">
+                            <button class="heavy-range-btn heavy-range-btn--active" data-range="All">All</button>
+                            <button class="heavy-range-btn" data-range="1Y">1Y</button>
+                            <button class="heavy-range-btn" data-range="6M">6M</button>
+                            <button class="heavy-range-btn" data-range="3M">3M</button>
+                            <button class="heavy-range-btn" data-range="1M">1M</button>
+                        </div>
+                    </div>
+
+                    <div class="heavy-actions">
+                        <button id="download-data-btn" class="heavy-action-btn">Download JSON</button>
+                        <button id="new-transfer-btn" class="heavy-action-btn">New Transfer</button>
+                        <button id="clear-data-btn" class="heavy-action-btn heavy-action-btn--danger">Clear Data</button>
+                    </div>
+                </div>
+
+                <!-- QR Section (default) -->
+                <div id="qr-section" class="heavy-card">
+                    <div id="qr-code" class="heavy-qr"></div>
+                    <p id="status-text" class="heavy-status">Generating session...</p>
+                </div>
+
+                <!-- Data Section (hidden until connected) -->
+                <div id="data-section" style="display: none;">
+                    <span class="heavy-connected-badge">Connected</span>
+                    <div id="data-display" class="heavy-data-display"></div>
+                </div>
+
+                <!-- Error Section (hidden) -->
+                <div id="error-section" style="display: none;">
+                    <div class="form-message error">
+                        <p id="error-text"></p>
+                        <button class="cta-button primary" onclick="location.reload()" style="margin-top: 12px; cursor: pointer; border: none; font-size: 14px;">Retry</button>
+                    </div>
+                </div>
+
+                <!-- Fallback Section: shown if user opened QR link in browser -->
+                <div id="fallback-section" style="display: none;" class="heavy-card">
+                    <h2>Open in Liftbook</h2>
+                    <p>Tap the button below to open this session in the Liftbook app.</p>
+                    <a id="open-in-app-btn" href="#" class="cta-button primary" style="margin-top: 16px; text-decoration: none; display: inline-flex;">
+                        Open in Liftbook
+                    </a>
+                    <p style="margin-top: 20px; font-size: 13px; color: var(--muted);">Don't have the app?
+                        <a href="https://apps.apple.com/us/app/liftbook-strength-log/id6755925820" style="color: var(--fg);">Get it on the App Store</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="brand foot-brand">
+                <span class="brand-name">Liftbook</span>
+            </div>
+            <div class="meta">
+                <span>&copy; <span id="year"></span> Liftbook</span>
+                <a href="/privacy.html" class="muted">Privacy</a>
+                <a href="/contact.html" class="muted">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+    <!-- QR Code library -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+
+    <script src="/script.js"></script>
+    <script src="/heavy.js"></script>
+    <script src="/heavy-chart.js"></script>
+</body>
+
+</html>
