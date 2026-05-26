@@ -75,7 +75,8 @@ body {
 
 nav {
     display: flex;
-    gap: 18px;
+    align-items: center;
+    gap: 14px;
 }
 
 nav a {
@@ -88,6 +89,25 @@ nav a.cta-link {
     padding: 8px 12px;
     border: 1px solid var(--fg);
     border-radius: 999px;
+}
+
+nav a.nav-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    color: var(--fg);
+    border-radius: 999px;
+    transition: background-color 0.15s ease;
+}
+
+nav a.nav-icon svg {
+    display: block;
+}
+
+nav a.nav-icon:hover {
+    background-color: color-mix(in oklab, var(--fg) 8%, transparent);
 }
 
 .section {
@@ -1076,6 +1096,174 @@ nav a.cta-link {
     margin-bottom: 16px;
 }
 
+/* Category bar */
+.heavy-category-bar {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 14px;
+}
+
+.heavy-category-btn {
+    padding: 6px 16px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: none;
+    font-family: 'Schoolbell', cursive;
+    font-size: 15px;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.15s, background 0.15s, border-color 0.15s;
+}
+
+.heavy-category-btn:hover {
+    color: #666;
+    background: var(--bg);
+}
+
+.heavy-category-btn--active {
+    color: #333;
+    background: var(--fg);
+    color: #fff;
+    border-color: var(--fg);
+    font-weight: bold;
+}
+
+/* Pie/donut chart toggle */
+.heavy-pie-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin-top: 8px;
+}
+
+.heavy-pie-toggle-btn {
+    padding: 4px 12px;
+    border: none;
+    background: none;
+    font-family: 'Schoolbell', cursive;
+    font-size: 14px;
+    color: #999;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: color 0.15s, background 0.15s;
+}
+
+.heavy-pie-toggle-btn:hover {
+    color: #666;
+    background: var(--bg);
+}
+
+.heavy-pie-toggle-btn--active {
+    color: #333;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* Heatmap styles */
+.heavy-heatmap-months {
+    font-family: 'Schoolbell', cursive;
+    font-size: 11px;
+    fill: #666;
+}
+
+.heavy-heatmap-days {
+    font-family: 'Schoolbell', cursive;
+    font-size: 11px;
+    fill: #666;
+}
+
+.heavy-heatmap-gradient {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    font-family: 'Schoolbell', cursive;
+    font-size: 12px;
+    color: #666;
+}
+
+.heavy-heatmap-gradient-bar {
+    display: flex;
+    gap: 2px;
+}
+
+.heavy-heatmap-gradient-step {
+    width: 14px;
+    height: 14px;
+    border-radius: 2px;
+}
+
+/* Muscle mapping matrix */
+.heavy-muscle-matrix {
+    margin-top: 24px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.heavy-muscle-matrix table {
+    border-collapse: collapse;
+    width: 100%;
+    font-family: 'Schoolbell', cursive;
+    font-size: 14px;
+}
+
+.heavy-muscle-matrix th,
+.heavy-muscle-matrix td {
+    padding: 6px 10px;
+    text-align: center;
+    border: 1px solid var(--border);
+    white-space: nowrap;
+}
+
+.heavy-muscle-matrix th {
+    background: var(--bg);
+    color: #555;
+    font-weight: bold;
+}
+
+.heavy-muscle-matrix th.muscle-group-header {
+    background: #333;
+    color: #fff;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+}
+
+.heavy-muscle-matrix th.muscle-subgroup-header {
+    background: #666;
+    color: #fff;
+    font-size: 14px;
+}
+
+.heavy-muscle-matrix th.muscle-name-header {
+    background: var(--bg);
+    font-size: 13px;
+}
+
+.heavy-muscle-matrix td:first-child {
+    text-align: left;
+    font-weight: bold;
+    background: var(--bg);
+    position: sticky;
+    left: 0;
+    z-index: 1;
+}
+
+.heavy-muscle-matrix td input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #333;
+}
+
+.heavy-muscle-matrix .muscle-matrix-empty {
+    padding: 24px;
+    text-align: center;
+    color: #999;
+    font-family: 'Schoolbell', cursive;
+    font-size: 15px;
+}
+
 /* Chart tooltip */
 .heavy-tooltip {
     position: absolute;
@@ -1139,6 +1327,10 @@ nav a.cta-link {
     }
 
     .heavy-tab-bar {
+        flex-wrap: wrap;
+    }
+
+    .heavy-category-bar {
         flex-wrap: wrap;
     }
 

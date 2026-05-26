@@ -23,6 +23,17 @@
             </a>
             <nav>
                 <a href="https://apps.apple.com/us/app/liftbook-strength-log/id6755925820" class="cta-link">Get the app</a>
+                <a href="/shop" class="nav-icon" aria-label="Shop">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="m15 11-1 9"/>
+                        <path d="m19 11-4-7"/>
+                        <path d="M2 11h20"/>
+                        <path d="m3.5 11 1.6 7.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6l1.7-7.4"/>
+                        <path d="M4.5 15.5h15"/>
+                        <path d="m5 11 4-7"/>
+                        <path d="m9 11 1 9"/>
+                    </svg>
+                </a>
             </nav>
         </div>
     </header>
@@ -38,7 +49,14 @@
                     <div class="heavy-dashboard">
                         <!-- Chart (main area) -->
                         <div class="heavy-chart-wrap">
+                            <div id="chart-category-bar" class="heavy-category-bar">
+                                <button class="heavy-category-btn heavy-category-btn--active" data-category="movement">Movement</button>
+                                <button class="heavy-category-btn" data-category="muscle">Muscle</button>
+                                <button class="heavy-category-btn" data-category="session">Session</button>
+                            </div>
                             <select id="movement-select" class="heavy-movement-select"></select>
+                            <select id="muscle-select" class="heavy-movement-select" style="display:none;"></select>
+                            <select id="session-date-select" class="heavy-movement-select" style="display:none;"></select>
                             <div id="chart-tab-bar" class="heavy-tab-bar">
                                 <button class="heavy-tab-btn heavy-tab-btn--active" data-chart="weight">Weight</button>
                                 <button class="heavy-tab-btn" data-chart="volume">Volume</button>
@@ -84,10 +102,12 @@
                         </div>
                     </div>
 
+                    <div id="muscle-matrix" class="heavy-muscle-matrix" style="display:none;"></div>
+
                     <div class="heavy-actions">
                         <p id="saved-meta" class="heavy-meta"></p>
                         <div class="heavy-actions-btns">
-                            <button id="download-data-btn" class="heavy-action-btn">Download JSON</button>
+                            <button id="download-data-btn" class="heavy-action-btn">Download Data</button>
                             <button id="new-transfer-btn" class="heavy-action-btn">New Transfer</button>
                             <button id="clear-data-btn" class="heavy-action-btn heavy-action-btn--danger">Clear Data</button>
                         </div>
