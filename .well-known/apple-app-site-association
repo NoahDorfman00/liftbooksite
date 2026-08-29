@@ -3,8 +3,13 @@
     "apps": [],
     "details": [
       {
+        "appIDs": ["YDC838ZVZ8.com.noahdorfman.liftbook"],
         "appID": "YDC838ZVZ8.com.noahdorfman.liftbook",
-        "paths": ["/heavy*"]
+        "components": [
+          { "/": "/l" },
+          { "/": "/heavy*" }
+        ],
+        "paths": ["/l", "/heavy*"]
       }
     ]
   }

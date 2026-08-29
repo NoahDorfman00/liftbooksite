@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shared lift – Liftbook</title>
+    <meta name="description" content="A workout shared from Liftbook, the simple lifting tracker.">
+    <meta name="robots" content="noindex">
+    <link rel="preload" href="/assets/fonts/Schoolbell-Regular.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+    <link rel="apple-touch-icon" href="/assets/images/app-icon.png">
+    <meta name="theme-color" content="#f9faf9">
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        .lift-main {
+            padding: 48px 0 80px;
+        }
+
+        .lift-content {
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        .lift-kicker {
+            text-align: center;
+            color: var(--muted);
+            font-size: 15px;
+            margin: 0 0 20px;
+        }
+
+        .lift-card {
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: #fff;
+            padding: 32px 28px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+            font-family: 'Schoolbell', cursive;
+            background-image: repeating-linear-gradient(transparent,
+                    transparent 35px,
+                    #f0f0ee 35px,
+                    #f0f0ee 36px);
+        }
+
+        .lift-title {
+            font-size: 36px;
+            margin: 0;
+            line-height: 1.1;
+        }
+
+        .lift-date {
+            color: var(--muted);
+            font-size: 18px;
+            margin: 4px 0 0;
+        }
+
+        .lift-movement {
+            margin-top: 24px;
+        }
+
+        .lift-movement-name {
+            font-size: 24px;
+            margin: 0 0 4px;
+            border-bottom: 1px solid var(--fg);
+            display: inline-block;
+            padding-right: 12px;
+        }
+
+        .lift-sets {
+            list-style: none;
+            margin: 6px 0 0;
+            padding: 0 0 0 8px;
+        }
+
+        .lift-sets li {
+            font-size: 20px;
+            line-height: 1.45;
+        }
+
+        .lift-empty {
+            color: var(--muted);
+            font-size: 18px;
+            margin: 16px 0 0;
+        }
+
+        .lift-error-card {
+            text-align: center;
+        }
+
+        .lift-error-card h1 {
+            font-size: 32px;
+            margin: 0 0 10px;
+        }
+
+        .lift-error-card p {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+            color: var(--muted);
+            font-size: 16px;
+            margin: 0;
+        }
+
+        .lift-actions {
+            margin-top: 28px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .lift-open-btn {
+            display: inline-block;
+            text-decoration: none;
+            color: #fff;
+            background: #000;
+            font-family: 'Schoolbell', cursive;
+            font-size: 20px;
+            padding: 12px 28px;
+            border-radius: 14px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+        }
+
+        .lift-open-btn[hidden] {
+            display: none;
+        }
+
+        .lift-get-note {
+            color: var(--muted);
+            font-size: 14px;
+            margin: 6px 0 0;
+        }
+
+        .lift-get-note a {
+            color: var(--fg);
+        }
+
+        @media (max-width: 480px) {
+            .lift-card {
+                padding: 24px 18px;
+            }
+
+            .lift-title {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="brand">
+                <a href="/" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;">
+                    <img src="/assets/images/app-icon.png" alt="Liftbook icon" class="brand-icon">
+                    <span class="brand-name">Liftbook</span>
+                </a>
+            </div>
+            <nav>
+                <a href="https://apps.apple.com/us/app/liftbook-strength-log/id6755925820" class="cta-link">Get the app</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="lift-main">
+        <div class="container lift-content">
+            <p class="lift-kicker" id="kicker">Someone shared a lift with you</p>
+
+            <div class="lift-card" id="card">
+                <noscript>
+                    <p class="lift-empty">JavaScript is required to view this shared lift.</p>
+                </noscript>
+            </div>
+
+            <div class="lift-actions">
+                <a id="open-app" class="lift-open-btn" hidden>Open in Liftbook</a>
+                <a href="https://apps.apple.com/us/app/liftbook-strength-log/id6755925820" class="cta-button primary" aria-label="Download on the App Store">
+                    <span class="apple-logo" aria-hidden="true"></span>
+                    <span class="cta-lines">
+                        <small>Download on the</small>
+                        <strong>App Store</strong>
+                    </span>
+                </a>
+                <p class="lift-get-note">Liftbook is a simple lifting tracker. Like a notebook—just better.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="brand foot-brand">
+                <span class="brand-name">Liftbook</span>
+            </div>
+            <div class="meta">
+                <span>© <span id="year"></span> Liftbook</span>
+                <a href="/privacy.html" class="muted">Privacy</a>
+                <a href="/contact.html" class="muted">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Privacy: the shared workout lives only in the URL fragment, which the
+        // browser never sends to any server. Everything below runs locally —
+        // no analytics, no fetches, no external scripts. All decoded strings
+        // are inserted via textContent only.
+        (function () {
+            'use strict';
+
+            document.getElementById('year').textContent = String(new Date().getFullYear());
+
+            var RS = '\u001E'; // record separator: title / date / movements
+            var US = '\u001F'; // unit separator: name / weight / reps / ...
+
+            var card = document.getElementById('card');
+            var kicker = document.getElementById('kicker');
+            var openBtn = document.getElementById('open-app');
+
+            function el(tag, className, text) {
+                var node = document.createElement(tag);
+                if (className) node.className = className;
+                if (text !== undefined) node.textContent = text;
+                return node;
+            }
+
+            function showError() {
+                kicker.hidden = true;
+                openBtn.hidden = true;
+                card.textContent = '';
+                card.classList.add('lift-error-card');
+                card.appendChild(el('h1', null, "This shared lift couldn't be read"));
+                card.appendChild(el('p', null, 'The link may be incomplete or from a newer version of Liftbook. You can still grab the app below.'));
+            }
+
+            function decodeBase64Url(input) {
+                if (!/^[A-Za-z0-9_-]+$/.test(input)) throw new Error('bad alphabet');
+                var b64 = input.replace(/-/g, '+').replace(/_/g, '/');
+                while (b64.length % 4) b64 += '=';
+                var bin = atob(b64);
+                var bytes = new Uint8Array(bin.length);
+                for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+                return new TextDecoder('utf-8', { fatal: true }).decode(bytes);
+            }
+
+            function formatDate(raw) {
+                var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(raw);
+                if (!m) return raw;
+                var d = new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]));
+                if (isNaN(d.getTime())) return raw;
+                return d.toLocaleDateString(undefined, {
+                    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+                });
+            }
+
+            function render(workout) {
+                card.textContent = '';
+                card.appendChild(el('h1', 'lift-title', workout.title || 'Workout'));
+                if (workout.date) {
+                    card.appendChild(el('p', 'lift-date', formatDate(workout.date)));
+                }
+                if (workout.movements.length === 0) {
+                    card.appendChild(el('p', 'lift-empty', 'No movements in this lift.'));
+                    return;
+                }
+                workout.movements.forEach(function (mv) {
+                    var section = el('div', 'lift-movement');
+                    section.appendChild(el('h2', 'lift-movement-name', mv.name || 'Movement'));
+                    var list = el('ul', 'lift-sets');
+                    mv.sets.forEach(function (set) {
+                        list.appendChild(el('li', null, set.reps !== undefined
+                            ? set.weight + ' × ' + set.reps
+                            : set.weight));
+                    });
+                    section.appendChild(list);
+                    card.appendChild(section);
+                });
+            }
+
+            try {
+                var fragment = location.hash.slice(1); // e.g. "v1=UHVzaC..."
+                if (fragment.indexOf('v1=') !== 0) throw new Error('missing v1 payload');
+
+                var decoded = decodeBase64Url(fragment.slice(3));
+                var fields = decoded.split(RS);
+                if (fields.length < 2) throw new Error('too few fields');
+
+                var workout = {
+                    title: fields[0],
+                    date: fields[1],
+                    movements: fields.slice(2).map(function (record) {
+                        var parts = record.split(US);
+                        var sets = [];
+                        for (var i = 1; i < parts.length; i += 2) {
+                            if (i + 1 < parts.length) {
+                                sets.push({ weight: parts[i], reps: parts[i + 1] });
+                            } else {
+                                sets.push({ weight: parts[i] });
+                            }
+                        }
+                        return { name: parts[0], sets: sets };
+                    })
+                };
+
+                render(workout);
+
+                // Deep link into the app when it's installed. The fragment is
+                // passed through verbatim; it never leaves the device.
+                openBtn.href = 'liftbook://l#' + fragment;
+                openBtn.hidden = false;
+            } catch (e) {
+                showError();
+            }
+        })();
+    </script>
+</body>
+
+</html>
