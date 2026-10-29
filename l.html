@@ -156,7 +156,7 @@
                 </a>
             </div>
             <nav>
-                <a href="https://apps.apple.com/us/app/liftbook-strength-log/id6755925820" class="cta-link">Get the app</a>
+                <a href="https://apps.apple.com/app/apple-store/id6755925820?pt=128332891&amp;ct=sharelink&amp;mt=8" class="cta-link">Get the app</a>
             </nav>
         </div>
     </header>
@@ -173,7 +173,8 @@
 
             <div class="lift-actions">
                 <a id="open-app" class="lift-open-btn" hidden>Open in Liftbook</a>
-                <a href="https://apps.apple.com/us/app/liftbook-strength-log/id6755925820" class="cta-button primary" aria-label="Download on the App Store">
+                <p id="inapp-hint" class="lift-get-note" hidden>Viewing this inside another app? Tap <strong>⋯</strong> and choose <strong>Open in browser</strong> to open it in Liftbook.</p>
+                <a href="https://apps.apple.com/app/apple-store/id6755925820?pt=128332891&amp;ct=sharelink&amp;mt=8" class="cta-button primary" aria-label="Download on the App Store">
                     <span class="apple-logo" aria-hidden="true"></span>
                     <span class="cta-lines">
                         <small>Download on the</small>
@@ -214,6 +215,13 @@
             var card = document.getElementById('card');
             var kicker = document.getElementById('kicker');
             var openBtn = document.getElementById('open-app');
+            var inAppHint = document.getElementById('inapp-hint');
+
+            // Built-in browsers of social apps (X, Instagram, Facebook, …)
+            // block liftbook:// links, so the button would do nothing there;
+            // the way in is opening the page in the real browser, where the
+            // universal link takes over.
+            var IN_APP_BROWSER = /Twitter|Instagram|FBAN|FBAV|Snapchat|LinkedInApp|musical_ly|BytedanceWebview|Line\//i;
 
             function el(tag, className, text) {
                 var node = document.createElement(tag);
@@ -225,6 +233,7 @@
             function showError() {
                 kicker.hidden = true;
                 openBtn.hidden = true;
+                inAppHint.hidden = true;
                 card.textContent = '';
                 card.classList.add('lift-error-card');
                 card.appendChild(el('h1', null, "This shared lift couldn't be read"));
@@ -304,8 +313,19 @@
 
                 // Deep link into the app when it's installed. The fragment is
                 // passed through verbatim; it never leaves the device.
-                openBtn.href = 'liftbook://l#' + fragment;
-                openBtn.hidden = false;
+                if (IN_APP_BROWSER.test(navigator.userAgent)) {
+                    inAppHint.hidden = false;
+                } else {
+                    openBtn.href = 'liftbook://l#' + fragment;
+                    openBtn.hidden = false;
+                    // Any other browser that silently refuses the link: if the
+                    // page is still showing a moment after the tap, explain
+                    openBtn.addEventListener('click', function () {
+                        setTimeout(function () {
+                            if (!document.hidden) inAppHint.hidden = false;
+                        }, 1500);
+                    });
+                }
             } catch (e) {
                 showError();
             }
