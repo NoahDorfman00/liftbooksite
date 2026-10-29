@@ -6,10 +6,9 @@
         "appIDs": ["YDC838ZVZ8.com.noahdorfman.liftbook"],
         "appID": "YDC838ZVZ8.com.noahdorfman.liftbook",
         "components": [
-          { "/": "/l" },
-          { "/": "/heavy*" }
+          { "/": "/l" }
         ],
-        "paths": ["/l", "/heavy*"]
+        "paths": ["/l"]
       }
     ]
   }
