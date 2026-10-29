@@ -173,7 +173,7 @@
 
             <div class="lift-actions">
                 <a id="open-app" class="lift-open-btn" hidden>Open in Liftbook</a>
-                <p id="inapp-hint" class="lift-get-note" hidden>Viewing this inside another app? Tap <strong>⋯</strong> and choose <strong>Open in browser</strong> to open it in Liftbook.</p>
+                <p id="inapp-hint" class="lift-get-note" hidden>Viewing this inside another app?<br>Tap <strong id="inapp-menu">⋯</strong> and choose <strong>Open in browser</strong> to open it in Liftbook.</p>
                 <a href="https://apps.apple.com/app/apple-store/id6755925820?pt=128332891&amp;ct=sharelink&amp;mt=8" class="cta-button primary" aria-label="Download on the App Store">
                     <span class="apple-logo" aria-hidden="true"></span>
                     <span class="cta-lines">
@@ -314,6 +314,10 @@
                 // Deep link into the app when it's installed. The fragment is
                 // passed through verbatim; it never leaves the device.
                 if (IN_APP_BROWSER.test(navigator.userAgent)) {
+                    // X's browser puts its menu behind vertical dots
+                    if (/Twitter/i.test(navigator.userAgent)) {
+                        document.getElementById('inapp-menu').textContent = '⋮';
+                    }
                     inAppHint.hidden = false;
                 } else {
                     openBtn.href = 'liftbook://l#' + fragment;
