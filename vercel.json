@@ -1,0 +1,14 @@
+{
+    "cleanUrls": true,
+    "trailingSlash": false,
+    "rewrites": [
+        { "source": "/get", "destination": "/api/get" },
+        { "source": "/:ct(ig|tt|x|yt)", "destination": "/api/get?ct=:ct" }
+    ],
+    "headers": [
+        {
+            "source": "/.well-known/apple-app-site-association",
+            "headers": [{ "key": "Content-Type", "value": "application/json" }]
+        }
+    ]
+}

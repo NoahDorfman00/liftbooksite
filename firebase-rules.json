@@ -14,6 +14,18 @@
                 // Only admin can read individual messages
                 ".read": "auth != null && auth.token.email == 'n.dorfman00@gmail.com'"
             }
+        },
+        "clicks": {
+            // Campaign link click counts, clicks/<UTC day>/<ct>, written by api/get.js.
+            // Only admin can read; anyone can add exactly one to a counter.
+            ".read": "auth != null && auth.token.email == 'n.dorfman00@gmail.com'",
+            "$day": {
+                ".validate": "$day.matches(/^[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]$/)",
+                "$ct": {
+                    ".write": "newData.exists()",
+                    ".validate": "$ct.matches(/^[a-z0-9-]+$/) && $ct.length <= 40 && newData.isNumber() && newData.val() == (data.exists() ? data.val() : 0) + 1"
+                }
+            }
         }
     }
 }
