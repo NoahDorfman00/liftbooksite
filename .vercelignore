@@ -4,3 +4,11 @@ firebase.json
 firebase-rules.json
 CNAME
 .nojekyll
+
+# Old static redirects, kept only for GitHub Pages while DNS caches expire;
+# on Vercel these paths are served by api/get.js.
+get.html
+ig.html
+tt.html
+x.html
+yt.html
