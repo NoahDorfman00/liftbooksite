@@ -3,7 +3,8 @@
     "trailingSlash": false,
     "rewrites": [
         { "source": "/get", "destination": "/api/get" },
-        { "source": "/:ct(ig|tt|x|yt)", "destination": "/api/get?ct=:ct" }
+        { "source": "/x", "destination": "/api/get?ct=x&card=x" },
+        { "source": "/:ct(ig|tt|yt)", "destination": "/api/get?ct=:ct" }
     ],
     "headers": [
         {

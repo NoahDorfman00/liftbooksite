@@ -16,7 +16,19 @@ const BOT = /bot|crawl|spider|preview|facebookexternalhit|whatsapp|telegram|disc
 // What previewers get instead of a redirect — they would follow one and show
 // the App Store's own preview. Title, one line and the app icon; deliberately
 // no og:image, so it renders as a compact bubble instead of a full-width card.
-const previewPage = (url) => `<!doctype html>
+// The exception is /x: X shows a full-width image card (the App Store header
+// art), so the link stands out as a reply.
+const IMAGE = 'https://liftbookapp.com/assets/images/social-x.png?v=1';
+const IMAGE_ALT = 'Liftbook — As simple as a notebook. A workout log and a bench press chart drawn on notebook paper.';
+const largeCard = `
+    <meta property="og:image" content="${IMAGE}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="628">
+    <meta property="og:image:alt" content="${IMAGE_ALT}">
+    <meta name="twitter:image" content="${IMAGE}">
+    <meta name="twitter:image:alt" content="${IMAGE_ALT}">`;
+
+const previewPage = (url, large) => `<!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -27,8 +39,8 @@ const previewPage = (url) => `<!doctype html>
     <meta property="og:title" content="Get Liftbook on the App Store">
     <meta property="og:description" content="As simple as a notebook. Free on the App Store.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://liftbookapp.com/get">
-    <meta name="twitter:card" content="summary">
+    <meta property="og:url" content="https://liftbookapp.com/${large ? 'x' : 'get'}">${large ? largeCard : ''}
+    <meta name="twitter:card" content="${large ? 'summary_large_image' : 'summary'}">
     <meta name="twitter:title" content="Get Liftbook on the App Store">
     <meta name="twitter:description" content="As simple as a notebook. Free on the App Store.">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
@@ -65,7 +77,7 @@ module.exports = async (req, res) => {
 
     if (!agent || BOT.test(agent)) {
         res.setHeader('Content-Type', 'text/html; charset=utf-8');
-        return res.status(200).send(previewPage(url));
+        return res.status(200).send(previewPage(url, req.query && req.query.card === 'x'));
     }
 
     if (req.method === 'GET') await count(ct);
